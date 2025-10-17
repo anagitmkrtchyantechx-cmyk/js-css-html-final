@@ -1,0 +1,345 @@
+/* TMDB Color Palette: Primary Blue, Accent Green, Dark Text */
+:root {
+    --tmdb-blue: #032541;
+    --tmdb-light-blue: #01b4e4;
+    --tmdb-green: #90cea1;
+    --tmdb-dark: #1e2021;
+    --tmdb-light-gray: #f5f5f5;
+    --tmdb-gray: #ccc;
+    --card-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Best guess for TMDB font */
+    line-height: 1.6;
+    background-color: var(--tmdb-light-gray);
+    color: var(--tmdb-dark);
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ------------------- HEADER ------------------- */
+
+header {
+  background-color: var(--tmdb-blue);
+  color: white;
+  padding: 10px 40px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px; /* smaller distance between logo and nav */
+}
+
+.logo {
+  display: block;
+  width: 154px;
+  height: 20px;
+  margin-right: 10px; /* smaller gap between logo and first nav link */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px; /* distance between nav links */
+  font-weight: 600;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between icons */
+}
+
+.user-controls i,
+.user-controls span,
+.user-controls .avatar {
+  cursor: pointer;
+}
+
+.avatar {
+  background-color: var(--tmdb-green);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--tmdb-dark);
+  font-size: 0.85rem;
+}
+
+/* ------------------- MAIN CONTENT ------------------- */
+main h1 {
+    font-size: 2rem;
+    margin: 30px 0 20px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+/* Left Sidebar (Filters) */
+.sidebar {
+    flex: 0 0 260px; /* Fixed width for desktop */
+}
+
+.filter-section {
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+.filter-section h3 {
+    background-color: var(--tmdb-blue);
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.filter-box {
+    padding: 15px;
+}
+
+.filter-header {
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.dropdown-control {
+    position: relative;
+}
+.dropdown-control select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--tmdb-gray);
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: white;
+    font-size: 1rem;
+}
+.dropdown-control i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--tmdb-blue);
+}
+
+/* Genres Tags */
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.genre-tag {
+    background-color: var(--tmdb-light-gray);
+    color: var(--tmdb-dark);
+    border: 1px solid var(--tmdb-gray);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.genre-tag.active {
+    background-color: var(--tmdb-blue);
+    color: white;
+}
+
+/* Date and Range Inputs */
+.date-inputs label { margin-right: 5px; font-size: 0.9rem; }
+.date-inputs input[type="date"] {
+    width: calc(50% - 25px);
+    padding: 5px;
+    border: 1px solid var(--tmdb-gray);
+    border-radius: 4px;
+}
+
+#min-user-votes, .runtime-range input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#min-votes-value, #runtime-value {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--tmdb-light-blue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.search-btn:hover {
+    background-color: #00a0cf;
+}
+
+
+/* Right Section (Movie Grid) */
+.movie-list-section {
+    flex-grow: 1;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 30px 20px;
+}
+
+/* Movie Card */
+.movie-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    position: relative;
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.movie-info {
+    padding: 25px 10px 10px;
+    position: relative;
+}
+
+.rating-circle {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    background-color: var(--tmdb-dark);
+    border-radius: 50%;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--tmdb-blue);
+    font-weight: bold;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.rating-circle.high { border-color: var(--tmdb-green); }
+.rating-circle.medium { border-color: yellow; }
+.rating-circle.low { border-color: red; }
+
+
+.movie-info h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.movie-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.load-more-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 30px 0 50px;
+    background-color: var(--tmdb-light-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.load-more-btn:hover {
+    background-color: #00a0cf;
+}
+
+
+/* ------------------- FOOTER ------------------- */
+footer {
+    background-color: var(--tmdb-blue);
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-content p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ------------------- RESPONSIVENESS ------------------- */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
