@@ -1,133 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popular Movies - TMDB Clone</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Popular Movies - TMDB Clone</title>
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-</head>
-
-<body>
-<header>
-  <div class="container header-content">
-    <!-- Logo -->
-    <div class="logo-container">
-      <img class="logo" src="/assets/logo.svg" alt="The Movie Database (TMDB)" width="154" height="20" />
-    </div>
-
-    <!-- Navigation -->
-    <nav>
-      <a href="#">Movies</a>
-      <a href="#">TV Shows</a>
-      <a href="#">People</a>
-      <a href="#">More</a>
-    </nav>
-
-    <!-- User controls -->
-    <div class="user-controls">
-      <i class="fas fa-plus"></i>
-      <i class="fas fa-globe"></i>
-      <span>EN</span>
-      <i class="fas fa-bell"></i>
-      <div class="avatar">A</div>
-    </div>
-  </div>
-</header>
-
-
-  <main class="container">
-    <h1>Popular Movies</h1>
-    <div class="content-wrapper">
-      <aside class="sidebar">
-        <div class="sort-box filter-section">
-          <h3>Sort</h3>
-          <div class="dropdown-control">
-            <select id="sort-by">
-              <option value="popularity.desc" selected>
-                Popularity Descending
-              </option>
-              <option value="popularity.asc">Popularity Ascending</option>
-              <option value="release_date.desc">
-                Release Date Descending
-              </option>
-              <option value="release_date.asc">Release Date Ascending</option>
-              <option value="vote_average.desc">Rating Descending</option>
-              <option value="vote_average.asc">Rating Ascending</option>
-            </select>
-            <i class="fas fa-chevron-down"></i>
-          </div>
+  <body>
+    <header>
+      <div class="container header-content">
+        <!-- Logo -->
+        <div class="logo-container">
+          <img
+            class="logo"
+            src="/assets/logo.svg"
+            alt="The Movie Database (TMDB)"
+            width="154"
+            height="20"
+          />
         </div>
 
-        <div class="filter-box filter-section">
-          <h3>Filters</h3>
+        <!-- Navigation -->
+        <nav>
+          <a href="#">Movies</a>
+          <a href="#">TV Shows</a>
+          <a href="#">People</a>
+          <a href="#">More</a>
+        </nav>
 
-          <div class="release-dates-filter">
-            <h4 class="filter-header">
-              Release Dates <i class="fas fa-chevron-up"></i>
-            </h4>
-            <label>
-              <input type="checkbox" id="search-all-releases" checked />
-              Search all releases?
-            </label>
-            <div class="date-inputs">
-              <label for="date-from">from</label>
-              <input type="date" id="date-from" />
-              <label for="date-to">to</label>
-              <input type="date" id="date-to" />
+        <!-- User controls -->
+        <div class="user-controls">
+          <i class="fas fa-plus"></i>
+          <i class="fas fa-globe"></i>
+          <span>EN</span>
+          <i class="fas fa-bell"></i>
+          <div class="avatar">A</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <h1>Popular Movies</h1>
+      <div class="content-wrapper">
+        <aside class="sidebar">
+          <!-- SORT PANEL -->
+          <div class="filter_panel card sort-panel open">
+            <div class="name" id="sortToggle">
+              <h2>Sort</h2>
+              <span class="glyphicons_v2 chevron-right"></span>
+            </div>
+            <div class="filter" id="sortContent">
+              <h3>Sort Results By</h3>
+              <div class="dropdown-control">
+                <select id="sort-by">
+                  <option value="popularity.desc" selected>
+                    Popularity Descending
+                  </option>
+                  <option value="popularity.asc">Popularity Ascending</option>
+                  <option value="release_date.desc">
+                    Release Date Descending
+                  </option>
+                  <option value="release_date.asc">
+                    Release Date Ascending
+                  </option>
+                  <option value="vote_average.desc">Rating Descending</option>
+                  <option value="vote_average.asc">Rating Ascending</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+              </div>
             </div>
           </div>
 
-          <div class="genres-filter">
-            <h4 class="filter-header">
-              Genres <i class="fas fa-chevron-up"></i>
-            </h4>
-            <div class="genre-tags" id="genre-tags-container"></div>
-          </div>
-
-          <div class="scores-runtime-filter">
-            <h4 class="filter-header">
-              Minimum User Votes <i class="fas fa-chevron-up"></i>
-            </h4>
-            <input type="range" id="min-user-votes" min="0" max="500" step="10" value="0" />
-            <output for="min-user-votes" id="min-votes-value">0</output>
-
-            <h4 class="filter-header">
-              Runtime <i class="fas fa-chevron-up"></i>
-            </h4>
-            <div class="runtime-range">
-              <input type="range" id="min-runtime" min="0" max="360" step="10" value="0" />
-              <input type="range" id="max-runtime" min="0" max="360" step="10" value="360" />
-              <output id="runtime-value">0 - 360 min</output>
+          <!-- FILTER PANEL -->
+          <div class="filter_panel card" id="filterPanel">
+            <div class="name" id="filterToggle">
+              <h2>Filters</h2>
+              <span class="glyphicons_v2 chevron-right"></span>
             </div>
+
+            <div class="filter" id="filterContent">
+              <div class="filter-group">
+                <h3>Show Me</h3>
+
+                <label class="textradio">
+                  <input
+                    id="show_me_everything"
+                    class="k-radio"
+                    type="radio"
+                    name="show_me"
+                    value="everything"
+                    checked="checked"
+                  />
+                  <label for="show_me_everything" class="k-radio-label"
+                    >Everything</label
+                  >
+                </label>
+                <br>
+
+                <label class="textradio">
+                  <input
+                    id="show_me_not_seen"
+                    class="k-radio"
+                    type="radio"
+                    value="unwatched"
+                    name="show_me"
+                  />
+                  <label for="show_me_not_seen" class="k-radio-label"
+                    >Movies I Haven't Seen</label
+                  >
+                </label>
+                <br>
+                <label class="textradio">
+                  <input
+                    id="show_me_seen"
+                    class="k-radio"
+                    type="radio"
+                    value="watched"
+                    name="show_me"
+                  />
+                  <label for="show_me_seen" class="k-radio-label"
+                    >Movies I Have Seen</label
+                  >
+                </label>
+              </div>
+              <div class="filter-group">
+                <h4 class="filter-header">Release Dates</h4>
+                <label
+                  ><input type="checkbox" id="search-all-releases" checked />
+                  Search all releases?</label
+                >
+                <div class="date-inputs">
+                  <label for="date-from">From</label>
+                  <input type="date" id="date-from" />
+                  <label for="date-to">To</label>
+                  <input type="date" id="date-to" />
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <h4 class="filter-header">Genres</h4>
+                <div class="genre-tags" id="genre-tags-container"></div>
+              </div>
+
+              <div class="filter-group">
+                <h4 class="filter-header">Minimum User Votes</h4>
+                <input
+                  type="range"
+                  id="min-user-votes"
+                  min="0"
+                  max="500"
+                  step="10"
+                  value="0"
+                />
+                <output for="min-user-votes" id="min-votes-value">0</output>
+              </div>
+
+              <div class="filter-group">
+                <h4 class="filter-header">Runtime</h4>
+                <div class="runtime-range">
+                  <input
+                    type="range"
+                    id="min-runtime"
+                    min="0"
+                    max="360"
+                    step="10"
+                    value="0"
+                  />
+                  <input
+                    type="range"
+                    id="max-runtime"
+                    min="0"
+                    max="360"
+                    step="10"
+                    value="360"
+                  />
+                  <output id="runtime-value">0 - 360 min</output>
+                </div>
+              </div>
+            </div>
+            <button class="search-btn" id="apply-filters-btn">Search</button>
           </div>
+        </aside>
 
-          <button class="search-btn" id="apply-filters-btn">Search</button>
-        </div>
-      </aside>
+        <section class="movie-list-section">
+          <div class="movie-grid" id="movie-grid"></div>
 
-      <section class="movie-list-section">
-        <div class="movie-grid" id="movie-grid"></div>
+          <button class="load-more-btn" id="load-more-btn">Load More</button>
+        </section>
+      </div>
+    </main>
 
-        <button class="load-more-btn" id="load-more-btn">Load More</button>
-      </section>
-    </div>
-  </main>
+    <footer>
+      <div class="container footer-content">
+        <p>THE MOVIE DB</p>
+        <nav class="footer-nav">
+          <a href="#">The Basics</a>
+          <a href="#">Get Involved</a>
+          <a href="#">Community</a>
+          <a href="#">Legal</a>
+        </nav>
+      </div>
+    </footer>
 
-  <footer>
-    <div class="container footer-content">
-      <p>THE MOVIE DB</p>
-      <nav class="footer-nav">
-        <a href="#">The Basics</a>
-        <a href="#">Get Involved</a>
-        <a href="#">Community</a>
-        <a href="#">Legal</a>
-      </nav>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
