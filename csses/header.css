@@ -38,7 +38,7 @@ nav a {
 .user-controls {
   display: flex;
   align-items: center;
-  gap: 12px; /* space between icons */
+  gap: 30px; /* space between icons */
 }
 
 .user-controls i,

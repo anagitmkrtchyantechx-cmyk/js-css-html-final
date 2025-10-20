@@ -18,7 +18,7 @@
   align-items: center;
   cursor: pointer;
   padding: 14px 18px;
-  background-color: #f5f7fa;
+  background-color: var(--white);
 }
 
 .filter_panel .name:hover {
@@ -39,7 +39,7 @@
 .filter_panel .filter {
   display: none;
   padding: 16px 18px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--white);
 }
 
 .filter_panel.open .filter {
@@ -76,10 +76,10 @@
   width: 100%;
   padding: 8px 10px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--white);
   appearance: none;
   -webkit-appearance: none;
-  background-color: white;
+  background-color: var(--white);
   font-size: 1rem;
   cursor: pointer;
 }
@@ -101,7 +101,7 @@
 }
 
 .genre-tag {
-  background-color: #edf2f6;
+  background-color: var(--white);
   color: var(--tmdb-blue);
   padding: 5px 12px;
   border-radius: 20px;
@@ -122,17 +122,15 @@
 
 input[type="checkbox"] {
   accent-color: var(--tmdb-light-blue);
+  color: var(--white);
 }
-
-
-
 
 input[type="date"],
 input[type="range"] {
   width: 100%;
   padding: 5px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--white);;
   margin-top: 5px;
 }
 
