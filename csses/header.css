@@ -1,0 +1,61 @@
+/* ------------------- HEADER ------------------- */
+
+header {
+  background-color: var(--tmdb-blue);
+  color: white;
+  padding: 10px 40px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px; /* smaller distance between logo and nav */
+}
+
+.logo {
+  display: block;
+  width: 154px;
+  height: 20px;
+  margin-right: 10px; /* smaller gap between logo and first nav link */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding-right: 500px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 10px; /* distance between nav links */
+  font-weight: 600;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between icons */
+}
+
+.user-controls i,
+.user-controls span,
+.user-controls .avatar {
+  cursor: pointer;
+}
+
+.avatar {
+  background-color: var(--tmdb-green);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--tmdb-dark);
+  font-size: 0.85rem;
+}

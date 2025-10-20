@@ -1,0 +1,114 @@
+/* Left Sidebar (Filters) */
+.sidebar {
+    flex: 0 0 260px; /* Fixed width for desktop */
+}
+
+.filter-section {
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+.filter-section h3 {
+    background-color: var(--tmdb-blue);
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.filter-box {
+    padding: 15px;
+}
+
+.filter-header {
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.dropdown-control {
+    position: relative;
+}
+.dropdown-control select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--tmdb-gray);
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: white;
+    font-size: 1rem;
+}
+.dropdown-control i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--tmdb-blue);
+}
+
+/* Genres Tags */
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.genre-tag {
+    background-color: var(--tmdb-light-gray);
+    color: var(--tmdb-dark);
+    border: 1px solid var(--tmdb-gray);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.genre-tag.active {
+    background-color: var(--tmdb-blue);
+    color: white;
+}
+
+/* Date and Range Inputs */
+.date-inputs label { margin-right: 5px; font-size: 0.9rem; }
+.date-inputs input[type="date"] {
+    width: calc(50% - 25px);
+    padding: 5px;
+    border: 1px solid var(--tmdb-gray);
+    border-radius: 4px;
+}
+
+#min-user-votes, .runtime-range input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#min-votes-value, #runtime-value {
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--tmdb-light-blue);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.search-btn:hover {
+    background-color: #00a0cf;
+}
