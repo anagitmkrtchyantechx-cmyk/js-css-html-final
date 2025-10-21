@@ -4,6 +4,7 @@
 }
 
 .filter_panel.card {
+
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -63,7 +64,7 @@
 
 .filter-header {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 600px;
   color: #222;
   margin-bottom: 8px;
 }
@@ -93,7 +94,6 @@
   color: var(--tmdb-blue);
 }
 
-/* Genre Tags */
 .genre-tags {
   display: flex;
   flex-wrap: wrap;
@@ -121,12 +121,36 @@
 }
 
 input[type="checkbox"] {
-  accent-color: var(--tmdb-light-blue);
-  color: var(--white);
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--white);
+  border: 2px solid var(--tmdb-light-blue);
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
 }
 
-input[type="date"],
-input[type="range"] {
+input[type="checkbox"]:checked {
+  background-color: var(--tmdb-light-blue);
+  border-color: var(--tmdb-light-blue);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+
+input[type="date"]{
   width: 100%;
   padding: 5px;
   border-radius: 4px;
@@ -173,4 +197,63 @@ output {
 }
 .search-btn:hover.active {
   background-color: var(--tmdb-light-blue);
+}
+
+.release-types {
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.release-types.hidden {
+  display: none;
+}
+
+.language-dropdown .dropdown-control {
+  position: relative;
+  margin-top: 6px;
+}
+
+.language-dropdown select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 2px solid var(--tmdb-light-gray);
+  appearance: none;
+  background-color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.language-dropdown i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--tmdb-blue);
+}
+
+.language-dropdown .dropdown-control {
+  position: relative;
+  margin-top: 6px;
+}
+
+.language-dropdown select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 4px, var(--tmdb-light-gray);
+  border: 2px solid var(--tmdb-light-gray);
+  appearance: none;
+  background-color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.language-dropdown i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--tmdb-blue);
 }

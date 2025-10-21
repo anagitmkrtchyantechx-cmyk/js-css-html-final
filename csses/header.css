@@ -1,44 +1,51 @@
-/* ------------------- HEADER ------------------- */
-
 header {
   background-color: var(--tmdb-blue);
   color: white;
   padding: 10px 40px;
+  display: flex;
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
 .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px; /* smaller distance between logo and nav */
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto; 
+  gap: 16px; 
 }
 
 .logo {
   display: block;
   width: 154px;
   height: 20px;
-  margin-right: 10px; /* smaller gap between logo and first nav link */
+  margin-right: 10px; 
 }
+
 
 nav {
   display: flex;
   align-items: center;
-  padding-right: 500px;
+  flex-grow: 1; 
+  margin-left: 0; 
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin-left: 10px; /* distance between nav links */
+  margin-left: 10px; 
   font-weight: 600;
   opacity: 0.9;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .user-controls {
   display: flex;
   align-items: center;
-  gap: 30px; /* space between icons */
+  gap: 30px; 
 }
 
 .user-controls i,
@@ -58,4 +65,50 @@ nav a {
   font-weight: bold;
   color: var(--tmdb-dark);
   font-size: 0.85rem;
+}
+
+.mobile-menu-toggle {
+    display: none; 
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+  }
+  
+  .header-content {
+    justify-content: flex-start;
+    gap: 15px; 
+  }
+
+  .mobile-menu-toggle {
+    display: block; 
+    order: -2; 
+    margin-right: 0; 
+  }
+
+
+  .logo {
+    width: 120px;
+    height: auto;
+    margin-right: auto; 
+  }
+
+
+  nav {
+    display: none; 
+  }
+  
+
+  .user-controls {
+    gap: 15px;
+    order: -1; 
+    margin-left: auto; 
+  }
+  .user-controls i { 
+      font-size: 1.2rem;
+  }
 }

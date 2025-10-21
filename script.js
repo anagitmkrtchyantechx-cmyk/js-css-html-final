@@ -136,35 +136,49 @@ async function init() {
   const genres = await fetchGenres();
   renderGenres(genres);
   await loadMovies(true);
+
   loadMoreBtn.addEventListener('click', () => {
     currentPage++;
     loadMovies(false);
     updateSearchButtonState();
   });
+
   sortBySelect.addEventListener('change', (e) => {
     currentSortBy = e.target.value;
     loadMovies(true);
     updateSearchButtonState();
   });
+
   applyFiltersBtn.addEventListener('click', () => {
     loadMovies(true);
     updateSearchButtonState();
   });
+
+  const dateFromInput = document.getElementById('date-from');
+  const dateToInput = document.getElementById('date-to');
+  const searchAllCheckbox = document.getElementById('search-all-releases');
+  dateFromInput?.addEventListener('input', updateSearchButtonState);
+  dateToInput?.addEventListener('input', updateSearchButtonState);
+  searchAllCheckbox?.addEventListener('change', updateSearchButtonState);
+
   const minVotesRange = document.getElementById('min-user-votes');
   const minVotesOutput = document.getElementById('min-votes-value');
   minVotesRange.addEventListener('input', () => {
     minVotesOutput.textContent = minVotesRange.value;
     updateSearchButtonState();
   });
+
   const minRuntimeRange = document.getElementById('min-runtime');
   const maxRuntimeRange = document.getElementById('max-runtime');
   const runtimeOutput = document.getElementById('runtime-value');
   const updateRuntimeOutput = () => {
     runtimeOutput.textContent = `${minRuntimeRange.value} - ${maxRuntimeRange.value} min`;
+    updateSearchButtonState();
   };
-  minRuntimeRange.addEventListener('input', updateRuntimeOutput, updateSearchButtonState());
-  maxRuntimeRange.addEventListener('input', updateRuntimeOutput, updateSearchButtonState());
+  minRuntimeRange.addEventListener('input', updateRuntimeOutput);
+  maxRuntimeRange.addEventListener('input', updateRuntimeOutput);
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const panels = document.querySelectorAll(".filter_panel .name");
@@ -199,26 +213,20 @@ function updateSearchButtonState() {
 
   let isActive = false;
 
-  // Check "Show Me" filter
   if (filterShowSelect && filterShowSelect.value !== "all") isActive = true;
-
-  // Check genres
   if (selectedGenres.length > 0) isActive = true;
-
-  // Check votes slider
   if (minVotes > 0) isActive = true;
-
-  // Check runtime slider
   if (minRuntime > 0 || maxRuntime < 360) isActive = true;
-
-  // Check dates
   if (!searchAllReleases && (dateFrom || dateTo)) isActive = true;
 
-  // Apply class
   const btn = document.getElementById("apply-filters-btn");
-  if (isActive) btn.classList.add("active");
-  else btn.classList.remove("active");
+  if (isActive) {
+    btn.classList.add("active");
+  } else {
+    btn.classList.remove("active");
+  }
 }
+
 
 function renderGenres(genres) {
   genres.forEach(genre => {
@@ -248,6 +256,60 @@ runtimeMax?.addEventListener("input", () => {
   document.getElementById("runtime-value").textContent = `${runtimeMin.value} - ${runtimeMax.value} min`;
   updateSearchButtonState();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchAllCheckbox = document.getElementById("search-all-releases");
+  const releaseTypes = document.querySelector(".release-types");
+
+  // Initial visibility
+  if (searchAllCheckbox.checked) {
+    releaseTypes.classList.add("hidden");
+  }
+
+  searchAllCheckbox.addEventListener("change", () => {
+    if (searchAllCheckbox.checked) {
+      releaseTypes.classList.add("hidden");
+    } else {
+      releaseTypes.classList.remove("hidden");
+    }
+  });
+});
+
+function createMovieCard(movie) {
+  const card = document.createElement('div');
+  card.classList.add('movie-card');
+
+  const posterPath = movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}` : 'placeholder.png';
+  const releaseDate = movie.release_date
+    ? new Date(movie.release_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+    : 'TBA';
+  
+  const rating = Math.round(movie.vote_average * 10);
+
+  let circleColor;
+  if (rating >= 70) circleColor = 'var(--tmdb-green)';
+  else if (rating >= 40) circleColor = 'yellow';
+  else circleColor = 'red';
+
+  const ratingCircle = `
+    <div class="rating-circle" 
+      style="--progress:${rating}; --circle-color:${circleColor}">
+      <span>${rating}%</span>
+    </div>
+  `;
+
+  card.innerHTML = `
+    <img src="${posterPath}" alt="${movie.title} Poster" 
+      onerror="this.onerror=null;this.src='https://via.placeholder.com/180x270?text=No+Poster'">
+    <div class="movie-info">
+      ${ratingCircle}
+      <h4>${movie.title}</h4>
+      <p>${releaseDate}</p>
+    </div>
+  `;
+
+  movieGrid.appendChild(card);
+}
 
 
 init();

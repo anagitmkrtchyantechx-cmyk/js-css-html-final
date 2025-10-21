@@ -41,18 +41,4 @@ main h1 {
   gap: 30px;
 }
 
-/* ------------------- RESPONSIVENESS ------------------- */
-@media (max-width: 900px) {
-  .content-wrapper {
-    flex-direction: column;
-  }
 
-  .sidebar {
-    flex: 1 1 auto;
-    width: 100%;
-  }
-
-  .movie-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-}

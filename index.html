@@ -100,7 +100,7 @@
                     >Everything</label
                   >
                 </label>
-                <br>
+                <br />
 
                 <label class="textradio">
                   <input
@@ -114,7 +114,7 @@
                     >Movies I Haven't Seen</label
                   >
                 </label>
-                <br>
+                <br />
                 <label class="textradio">
                   <input
                     id="show_me_seen"
@@ -130,10 +130,6 @@
               </div>
               <div class="filter-group">
                 <h4 class="filter-header">Release Dates</h4>
-                <label
-                  ><input type="checkbox" id="search-all-releases" checked />
-                  Search all releases?</label
-                >
                 <div class="date-inputs">
                   <label for="date-from">From</label>
                   <input type="date" id="date-from" />
@@ -141,10 +137,60 @@
                   <input type="date" id="date-to" />
                 </div>
               </div>
+              <div class="filter-group">
+                <h4 class="filter-header">Release Dates</h4>
+                <label>
+                  <input type="checkbox" id="search-all-releases" />
+                  Search all releases?
+                </label>
+
+                <div class="release-types">
+                  <label
+                    ><input type="checkbox" checked /> Search all
+                    countries?</label
+                  ><br />
+                  <label
+                    ><input type="checkbox" checked /> Theatrical
+                    (limited)</label
+                  ><br />
+                  <label><input type="checkbox" checked /> Theatrical</label
+                  ><br />
+                  <label><input type="checkbox" checked /> Premiere</label
+                  ><br />
+                  <label><input type="checkbox" checked /> Digital</label><br />
+                  <label><input type="checkbox" checked /> Physical</label
+                  ><br />
+                  <label><input type="checkbox" checked /> TV</label>
+                </div>
+              </div>
 
               <div class="filter-group">
                 <h4 class="filter-header">Genres</h4>
                 <div class="genre-tags" id="genre-tags-container"></div>
+              </div>
+
+              <div class="filter-group language-dropdown">
+                <h4 class="filter-header">Language ?</h4>
+                <div class="dropdown-control">
+                  <select id="language-select">
+                    <option value="">None Selected</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="ja">Japanese</option>
+                    <option value="de">German</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="zh">Chinese</option>
+                    <option value="it">Italian</option>
+                    <option value="ru">Russian</option>
+                    <option value="ko">Korean</option>
+                    <option value="ar">Arabic</option>
+                    <option value="hi">Hindi</option>
+                    <option value="tr">Turkish</option>
+                    <option value="pl">Polish</option>
+                  </select>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
               </div>
 
               <div class="filter-group">
@@ -183,8 +229,8 @@
                 </div>
               </div>
             </div>
-            <button class="search-btn" id="apply-filters-btn">Search</button>
           </div>
+          <button class="search-btn" id="apply-filters-btn">Search</button>
         </aside>
 
         <section class="movie-list-section">
@@ -195,56 +241,70 @@
       </div>
     </main>
 
-<footer>
-  <nav class="footer-nav">
-    <div class="footer-logo">
-      <img src="/assets/footLogo.svg" alt="The Movie Database (TMDB)" width="130" height="94">
-    </div>
+    <footer>
+      <nav class="footer-nav">
+        <div class="footer-logo">
+          <img
+            src="/assets/footLogo.svg"
+            alt="The Movie Database (TMDB)"
+            width="130"
+            height="94"
+          />
+        </div>
 
-    <div class="footer-column">
-      <h3>The Basics</h3>
-      <ul>
-        <li><a href="/about">About TMDB</a></li>
-        <li><a href="/about/staying-in-touch">Contact Us</a></li>
-        <li><a href="/login?to=read_me&amp;redirect_uri=/docs" target="_blank">API Documentation</a></li>
-        <li><a href="/api-for-business">API for Business</a></li>
-        <li><a href="https://status.themoviedb.org/" target="_blank">System Status</a></li>
-      </ul>
-    </div>
+        <div class="footer-column">
+          <h3>The Basics</h3>
+          <ul>
+            <li><a href="/about">About TMDB</a></li>
+            <li><a href="/about/staying-in-touch">Contact Us</a></li>
+            <li>
+              <a href="/login?to=read_me&amp;redirect_uri=/docs" target="_blank"
+                >API Documentation</a
+              >
+            </li>
+            <li><a href="/api-for-business">API for Business</a></li>
+            <li>
+              <a href="https://status.themoviedb.org/" target="_blank"
+                >System Status</a
+              >
+            </li>
+          </ul>
+        </div>
 
-    <div class="footer-column">
-      <h3>Get Involved</h3>
-      <ul>
-        <li><a href="/bible">Contribution Bible</a></li>
-        <li><a href="/movie/new">Add New Movie</a></li>
-        <li><a href="/tv/new">Add New TV Show</a></li>
-      </ul>
-    </div>
+        <div class="footer-column">
+          <h3>Get Involved</h3>
+          <ul>
+            <li><a href="/bible">Contribution Bible</a></li>
+            <li><a href="/movie/new">Add New Movie</a></li>
+            <li><a href="/tv/new">Add New TV Show</a></li>
+          </ul>
+        </div>
 
-    <div class="footer-column">
-      <h3>Community</h3>
-      <ul>
-        <li><a href="/bible/general#674f287930fc85cab62597b4">Guidelines</a></li>
-        <li><a href="/discuss">Discussions</a></li>
-        <li><a href="/leaderboard">Leaderboard</a></li>
-        <li><a href="/talk">Support Forums</a></li>
-      </ul>
-    </div>
+        <div class="footer-column">
+          <h3>Community</h3>
+          <ul>
+            <li>
+              <a href="/bible/general#674f287930fc85cab62597b4">Guidelines</a>
+            </li>
+            <li><a href="/discuss">Discussions</a></li>
+            <li><a href="/leaderboard">Leaderboard</a></li>
+            <li><a href="/talk">Support Forums</a></li>
+          </ul>
+        </div>
 
-    <div class="footer-column">
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="/terms-of-use">Terms of Use</a></li>
-        <li><a href="/api-terms-of-use">API Terms of Use</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/dmca-policy">DMCA Policy</a></li>
-      </ul>
-    </div>
-  </nav>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/terms-of-use">Terms of Use</a></li>
+            <li><a href="/api-terms-of-use">API Terms of Use</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/dmca-policy">DMCA Policy</a></li>
+          </ul>
+        </div>
+      </nav>
 
-  <section class="footer-build">Build 83082fe (9334)</section>
-</footer>
-
+      <section class="footer-build">Build 83082fe (9334)</section>
+    </footer>
 
     <script src="script.js"></script>
   </body>
