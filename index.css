@@ -1,8 +1,6 @@
-@import url(./csses/root.css);
-@import url(./csses/header.css);
-@import url(./csses/filter.css);
-@import url(./csses/movies.css);
-@import url(./csses/footer.css);
-@import url(./csses/style.css);
-
-
+@import url(./files/root.css);
+@import url(./files/header.css);
+@import url(./files/filter.css);
+@import url(./files/movies.css);
+@import url(./files/footer.css);
+@import url(./files/style.css);

@@ -10,6 +10,7 @@ const genreTagsContainer = document.getElementById('genre-tags-container');
 const voteSlider = document.getElementById("min-user-votes");
 const runtimeMin = document.getElementById("min-runtime");
 const runtimeMax = document.getElementById("max-runtime");
+const bigBtn = document.getElementById("big-filters-btn")
 
 let currentPage = 1;
 let currentSortBy = sortBySelect.value;
@@ -225,7 +226,20 @@ function updateSearchButtonState() {
   } else {
     btn.classList.remove("active");
   }
+
+  // Big button logic
+  const bigBtn = document.getElementById("big-filters-btn");
+  if (isActive) {
+    bigBtn.classList.add("active");
+  } else {
+    bigBtn.classList.remove("active");
+  }
 }
+
+bigBtn.addEventListener("click", () => {
+  loadMovies(true);  // reload movies with current filters
+  updateSearchButtonState();
+});
 
 
 function renderGenres(genres) {
@@ -310,6 +324,30 @@ function createMovieCard(movie) {
 
   movieGrid.appendChild(card);
 }
+
+const searchAllCheckbox = document.getElementById("search-all-releases");
+const releaseTypes = document.querySelector(".release-types");
+
+if (searchAllCheckbox.checked) {
+  releaseTypes.classList.add("hidden");
+} else {
+  releaseTypes.classList.remove("hidden");
+}
+
+searchAllCheckbox.addEventListener("change", () => {
+  if (searchAllCheckbox.checked) {
+    releaseTypes.classList.add("hidden");
+  } else {
+    releaseTypes.classList.remove("hidden");
+  }
+  updateSearchButtonState(); 
+});
+
+const releaseTypeCheckboxes = releaseTypes.querySelectorAll('input[type="checkbox"]');
+releaseTypeCheckboxes.forEach(cb => {
+  cb.addEventListener("change", updateSearchButtonState); 
+});
+
 
 
 init();

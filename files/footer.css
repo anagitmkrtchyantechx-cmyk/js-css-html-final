@@ -1,6 +1,6 @@
 footer {
   background-color: var(--tmdb-blue); /* TMDb light blue */
-  color: #fff;
+  color: var(--white);
   padding: 40px 20px;
   text-align: center;
   font-family: 'Inter', sans-serif;

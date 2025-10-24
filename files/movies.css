@@ -32,8 +32,8 @@
 
 
 .rating-circle.high { border-color: var(--tmdb-green); }
-.rating-circle.medium { border-color: yellow; }
-.rating-circle.low { border-color: red; }
+.rating-circle.medium { border-color: var(--yellow); }
+.rating-circle.low { border-color: var(--red); }
 
 .rating-circle {
   --progress: 0;
